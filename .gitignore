@@ -1,0 +1,28 @@
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+.env
+.env.local
+.venv/
+venv/
+env/
+
+.vscode/
+.idea/
+*.swp
+.DS_Store
+Thumbs.db
+
+build/
+dist/
+*.egg-info/
+*.spec
+
+# PyInstaller 빌드 산출물
+/release/
+
+# 런타임 임시 파일
+/tmp/
+.cache/
