@@ -12,6 +12,8 @@ from typing import Any, Optional
 
 import webview
 
+from . import auth as auth_mod
+
 
 class Api:
     """PyWebView JS 브릿지.
@@ -76,3 +78,21 @@ class Api:
         if not result:
             return []
         return list(result)
+
+    # ------------------------------------------------------------------
+    # Auth
+    # ------------------------------------------------------------------
+    def sign_in(self, email: str, password: str) -> dict[str, Any]:
+        return auth_mod.sign_in(email, password)
+
+    def sign_up(self, email: str, password: str) -> dict[str, Any]:
+        return auth_mod.sign_up(email, password)
+
+    def sign_out(self) -> dict[str, Any]:
+        return auth_mod.sign_out()
+
+    def restore_session(self) -> dict[str, Any]:
+        return auth_mod.restore_session()
+
+    def get_current_user(self) -> dict[str, Any]:
+        return auth_mod.get_current_user()

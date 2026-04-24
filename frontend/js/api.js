@@ -69,5 +69,30 @@
       const api = await getApi();
       return api.pick_image_files();
     },
+
+    async signIn(email, password) {
+      const api = await getApi();
+      return api.sign_in(email, password);
+    },
+
+    async signUp(email, password) {
+      const api = await getApi();
+      return api.sign_up(email, password);
+    },
+
+    async signOut() {
+      const api = await getApi();
+      return api.sign_out();
+    },
+
+    async restoreSession() {
+      const api = await getApi();
+      return api.restore_session();
+    },
+
+    async getCurrentUser() {
+      const api = await getApi();
+      return api.get_current_user();
+    },
   };
 })();

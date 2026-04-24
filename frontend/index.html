@@ -6,35 +6,44 @@
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <!-- 로그인 뷰 (Phase 2에서 실제 인증 연결) -->
+  <!-- 로그인 / 회원가입 뷰 -->
   <section id="view-login" class="view" hidden>
     <div class="auth-card">
       <h1>📸 이미지 로테이터</h1>
-      <p class="muted">블로그 포스팅용 이미지 자동 변형 도구</p>
+      <p class="muted" id="auth-subtitle">계정으로 로그인하세요</p>
 
-      <form id="login-form" class="auth-form">
+      <form id="auth-form" class="auth-form" novalidate>
         <label>
           이메일
           <input type="email" name="email" autocomplete="email" required>
         </label>
         <label>
-          비밀번호
-          <input type="password" name="password" autocomplete="current-password" required>
+          비밀번호 <span class="muted small">(최소 6자)</span>
+          <input type="password" name="password" autocomplete="current-password" required minlength="6">
         </label>
-        <button type="submit" class="btn primary">로그인</button>
-        <button type="button" id="btn-signup" class="btn ghost">회원가입</button>
+        <button type="submit" id="btn-auth-primary" class="btn primary">로그인</button>
+        <button type="button" id="btn-auth-toggle" class="btn ghost">계정이 없으신가요? 회원가입</button>
       </form>
 
-      <p id="login-error" class="error" hidden></p>
-      <p class="muted small">※ 로그인 기능은 Phase 2에서 연결됩니다.</p>
+      <p id="auth-error" class="error small" hidden></p>
+      <p id="auth-info" class="muted small" hidden></p>
+    </div>
+  </section>
+
+  <!-- 부팅 스플래시 (자동 로그인 체크 중) -->
+  <section id="view-boot" class="view">
+    <div class="boot-splash">
+      <div class="spinner"></div>
+      <p class="muted">불러오는 중…</p>
     </div>
   </section>
 
   <!-- 메인 뷰 -->
-  <section id="view-main" class="view">
+  <section id="view-main" class="view" hidden>
     <header class="topbar">
       <div class="brand">📸 이미지 로테이터 <span class="badge">v2</span></div>
       <div class="topbar-actions">
+        <span id="current-user" class="muted small"></span>
         <button id="btn-settings" class="icon-btn" title="설정">⚙️</button>
         <button id="btn-logout" class="icon-btn" title="로그아웃">🔒</button>
       </div>
@@ -107,6 +116,7 @@
 
   <script src="js/api.js"></script>
   <script src="js/modals.js"></script>
+  <script src="js/auth.js"></script>
   <script src="js/companies.js"></script>
   <script src="js/images.js"></script>
   <script src="js/app.js"></script>
